@@ -1,45 +1,54 @@
 # blackroad-images — Agent Training Curriculum
 
-**Type:** worker | **Language:** javascript
+**Type:** worker | **Languages:** javascript, bash
 
 ## Overview
 
-AI image gen — DALL-E, FLUX, SDXL, R2
-
-## Learning Objectives
-
-1. Understand the purpose and architecture of blackroad-images
-2. Navigate the codebase and identify key files
-3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
-5. Document work in codex and broadcast TILs
+AI image generation and CDN serving at images.blackroad.io. A Cloudflare Worker that serves brand assets from R2 (logos, pixel art, sprites) and generates new images via Workers AI (SDXL, FLUX). Includes D1 for image metadata, bash scripts for bulk upload and generation, and routes for brand, pixel art, worlds, and HQ assets. ~972 lines of Worker code.
 
 ## Key Files
 
-- `src/worker.js` — Main Worker source
-- `wrangler.toml` — Deployment config
-- `openapi.json` — API documentation
+- `src/worker.js` — Worker (~972 lines): R2 serving, AI generation, metadata, routing
+- `migrations/0001_init.sql` — D1 schema for image metadata
+- `upload.sh` — Bulk upload script to R2
+- `generate.sh` — AI image generation script
+- `wrangler.toml` — Worker config, R2 + D1 bindings
 - `package.json` — Dependencies
+
+## Asset Routes
+
+| Route | Serves |
+|-------|--------|
+| `/brand/*` | Brand logos and assets |
+| `/pixel-art/*` | 50+ pixel art sprites |
+| `/worlds/*` | World/metaverse backgrounds |
+| `/hq/*` | HQ floor backgrounds |
+
+## Learning Objectives
+
+1. Understand R2 object storage and how Workers serve from it
+2. Know the Workers AI image generation pipeline (SDXL, FLUX)
+3. Understand the CDN routing pattern (path → R2 key)
+4. Know how D1 tracks image metadata
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `src/worker.js` and list all routes
+- [ ] Read `migrations/0001_init.sql` and describe the metadata schema
+- [ ] List all asset categories served by the CDN
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new route category (e.g., `/icons/*`)
+- [ ] Improve cache headers for better CDN performance
+- [ ] Add input validation to the generation endpoint
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add image transformation (resize, crop) on-the-fly
+- [ ] Implement a generation queue with rate limiting
+- [ ] Add a gallery endpoint that lists all assets with metadata
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a CDN invalidation strategy for updated assets
+- [ ] Propose cost optimization for R2 storage and AI generation
+- [ ] Review the image pipeline for security (prevent prompt injection in generation)

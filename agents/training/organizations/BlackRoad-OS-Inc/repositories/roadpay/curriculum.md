@@ -1,45 +1,53 @@
 # roadpay — Agent Training Curriculum
 
-**Type:** worker | **Language:** javascript
+**Type:** worker | **Languages:** javascript
 
 ## Overview
 
-Billing system — D1, Stripe, subscriptions
-
-## Learning Objectives
-
-1. Understand the purpose and architecture of roadpay
-2. Navigate the codebase and identify key files
-3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
-5. Document work in codex and broadcast TILs
+BlackRoad's own billing system. D1 stores all subscription logic, plans, invoices, and metering. Stripe is used only as a card charger — BlackRoad owns the billing data. 4 plans (Starter free, Pro $29, Team $99, Enterprise custom) + 3 add-ons (Extra TOPS $19, Custom Models $49, Priority Inference $9). ~1046 lines of Worker code.
 
 ## Key Files
 
-- `src/worker.js` — Main Worker source
-- `wrangler.toml` — Deployment config
-- `openapi.json` — API documentation
+- `src/worker.js` — Complete Worker (~1046 lines): plan management, subscriptions, invoices, Stripe webhooks, usage metering, admin endpoints
+- `wrangler.toml` — Worker config, D1 binding, Stripe secret
 - `package.json` — Dependencies
+
+## Architecture
+
+```
+User → RoadPay Worker → D1 (plans, subscriptions, invoices)
+                           ↓
+                    Stripe (card charging only)
+                           ↓
+                    Webhook → Worker → D1 update
+```
+
+## Learning Objectives
+
+1. Understand the "own your billing" philosophy — D1 is the source of truth, not Stripe
+2. Read the plan/subscription/invoice data model in D1
+3. Trace a subscription lifecycle: signup → charge → webhook → activate
+4. Understand Stripe webhook verification and handling
+5. Know the admin endpoints for plan and subscription management
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `src/worker.js` and list all API routes
+- [ ] Identify the D1 tables (plans, subscriptions, invoices, usage)
+- [ ] Trace the Stripe webhook flow: what happens when a payment succeeds?
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add input validation to the subscription creation endpoint
+- [ ] Add a new field to the invoice response
+- [ ] Fix any error handling gaps in webhook processing
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add usage metering (track API calls per subscription)
+- [ ] Implement proration for mid-cycle plan changes
+- [ ] Add a customer portal endpoint for self-service billing
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design multi-currency support
+- [ ] Propose an audit trail for all billing mutations
+- [ ] Review the Stripe integration for security best practices

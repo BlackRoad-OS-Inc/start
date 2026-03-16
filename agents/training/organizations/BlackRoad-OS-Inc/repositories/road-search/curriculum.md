@@ -1,45 +1,52 @@
 # road-search — Agent Training Curriculum
 
-**Type:** worker | **Language:** javascript
+**Type:** worker | **Languages:** javascript
 
 ## Overview
 
-FTS5 search engine with AI answers
-
-## Learning Objectives
-
-1. Understand the purpose and architecture of road-search
-2. Navigate the codebase and identify key files
-3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
-5. Document work in codex and broadcast TILs
+FTS5 search engine with AI answers across the BlackRoad ecosystem. A Cloudflare Worker backed by D1 (SQLite FTS5) indexing 43+ pages across all BlackRoad domains. Features: full-text search, autocomplete/suggestions, "I'm Feeling Lucky" redirect, AI-powered answer generation via Ollama, and admin endpoints for indexing new pages. ~999 lines of Worker code.
 
 ## Key Files
 
-- `src/worker.js` — Main Worker source
-- `wrangler.toml` — Deployment config
-- `openapi.json` — API documentation
+- `src/worker.js` — Complete Worker (~999 lines): search, suggest, lucky, AI answers, index management
+- `wrangler.toml` — Worker config, D1 binding
 - `package.json` — Dependencies
+
+## API Endpoints
+
+| Endpoint | Purpose |
+|----------|---------|
+| `/api/search?q=X&limit=N` | Full-text search |
+| `/api/suggest?q=X` | Autocomplete suggestions |
+| `/lucky?q=X` | I'm Feeling Lucky redirect |
+| `/api/stats` | Index statistics |
+| `/api/index` | Add page to index (auth required) |
+
+## Learning Objectives
+
+1. Understand FTS5 (SQLite full-text search) and how it's used in D1
+2. Trace a search query from input through FTS5 to ranked results
+3. Understand how AI answers are generated (search results → Ollama prompt)
+4. Know how pages are indexed and the crawl/index pipeline
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `src/worker.js` and list all routes
+- [ ] Explain how FTS5 ranking works (bm25 or rank function)
+- [ ] Call `/api/stats` and describe the index contents
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Improve search result snippet generation
+- [ ] Add a new filter parameter (e.g., by domain)
+- [ ] Fix autocomplete for edge cases (empty query, special chars)
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add search analytics (log popular queries)
+- [ ] Implement faceted search (filter by domain, type)
+- [ ] Build a sitemap generator from the search index
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a crawler that auto-indexes all BlackRoad sites
+- [ ] Propose search relevance improvements (boosting, synonyms)
+- [ ] Evaluate embedding-based semantic search vs FTS5 keyword search
