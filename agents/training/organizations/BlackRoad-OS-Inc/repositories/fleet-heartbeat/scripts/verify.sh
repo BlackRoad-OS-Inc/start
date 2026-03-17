@@ -1,10 +1,8 @@
 #!/bin/bash
-# Verify fleet-heartbeat training completion
 set -e
-
-echo 'Verifying fleet-heartbeat training...'
-# Check that the agent can:
-# 1. Navigate the codebase
-# 2. Explain the architecture
-# 3. Make a change and deploy
-echo '✓ fleet-heartbeat training verified'
+PASS=0; FAIL=0
+check() { if eval "$2" &>/dev/null; then echo "PASS: $1"; ((PASS++)); else echo "FAIL: $1"; ((FAIL++)); fi; }
+cd fleet-heartbeat 2>/dev/null || cd .
+check "Repo exists" "[ -f LICENSE ] || [ -f README.md ]"
+echo "Results: $PASS passed, $FAIL failed"
+[ "$FAIL" -eq 0 ] && echo "All checks passed." || exit 1

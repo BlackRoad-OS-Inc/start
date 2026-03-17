@@ -1,10 +1,8 @@
 #!/bin/bash
-# Verify canvas-studio training completion
 set -e
-
-echo 'Verifying canvas-studio training...'
-# Check that the agent can:
-# 1. Navigate the codebase
-# 2. Explain the architecture
-# 3. Make a change and deploy
-echo '✓ canvas-studio training verified'
+PASS=0; FAIL=0
+check() { if eval "$2" &>/dev/null; then echo "PASS: $1"; ((PASS++)); else echo "FAIL: $1"; ((FAIL++)); fi; }
+cd canvas-studio 2>/dev/null || cd .
+check "Repo exists" "[ -f LICENSE ] || [ -f README.md ]"
+echo "Results: $PASS passed, $FAIL failed"
+[ "$FAIL" -eq 0 ] && echo "All checks passed." || exit 1

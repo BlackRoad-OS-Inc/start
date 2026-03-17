@@ -1,9 +1,8 @@
 #!/bin/bash
-# Setup blackroad-chat for training
 set -e
+echo "Setting up blackroad-chat training environment..."
+if [ ! -d "blackroad-chat" ]; then gh repo clone BlackRoad-OS-Inc/blackroad-chat; fi
+cd blackroad-chat
 
-echo 'Cloning blackroad-chat...'
-gh repo clone BlackRoad-OS-Inc/blackroad-chat ~/training/blackroad-chat
-cd ~/training/blackroad-chat
-npm install
-echo '✓ blackroad-chat ready for training'
+npm install 2>/dev/null || true
+echo "Setup complete."

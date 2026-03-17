@@ -1,45 +1,44 @@
 # blackroad-chat — Agent Training Curriculum
 
-**Type:** worker | **Language:** javascript
+**Type:** worker | **Languages:** javascript, typescript
 
 ## Overview
 
-Multi-model AI chat, 9 models, pipelines
+Ollama-powered chat interface at chat.blackroad.io. Cloudflare Worker with a web UI for free AI chat. Connects to local Ollama models via Cloudflare tunnel. Includes Playwright end-to-end tests.
+
+## Key Files
+
+- `worker.js` — Cloudflare Worker: chat endpoint, Ollama proxy, streaming responses
+- `wrangler.toml` — Worker config, tunnel binding
+- `test/chat.spec.ts` — Playwright E2E tests
+- `playwright.config.ts` — Test configuration
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of blackroad-chat
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
-
-- `src/worker.js` — Main Worker source
-- `wrangler.toml` — Deployment config
-- `openapi.json` — API documentation
-- `package.json` — Dependencies
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `worker.js` and trace the chat request flow
+- [ ] Identify how Ollama is connected (tunnel vs direct)
+- [ ] Run the Playwright tests locally
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add input sanitization to chat messages
+- [ ] Add a loading indicator to the UI
+- [ ] Add a test for streaming responses
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add model selection in the UI (pick which Ollama model)
+- [ ] Implement conversation history persistence
+- [ ] Add markdown rendering in responses
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a multi-model chat (route different questions to different models)
+- [ ] Propose a chat-based search integration with RoadSearch
+- [ ] Review the Ollama tunnel for security

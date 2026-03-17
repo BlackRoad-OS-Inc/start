@@ -1,40 +1,42 @@
 # canvas-studio — Agent Training Curriculum
 
-**Type:** app | **Language:** javascript
+**Type:** app | **Languages:** python
 
 ## Overview
 
-Design tool — graphics, presentations
+Design tool for graphics, presentations, and social media posts. Includes a palette generator for creating color schemes. BlackRoad's free alternative to Canva — creator-owned, no subscription traps.
+
+## Key Files
+
+- `src/palette_generator.py` — Color palette generation algorithms
+- `tests/test_palette.py` — Palette tests
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of canvas-studio
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `palette_generator.py` and list generation algorithms
+- [ ] Run tests and understand the color model
+- [ ] Identify what design features are implemented vs planned
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new palette algorithm (analogous, triadic, etc.)
+- [ ] Improve test coverage
+- [ ] Add input validation for color values
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Build an export feature (PNG, SVG)
+- [ ] Add template support for social media dimensions
+- [ ] Implement text overlay rendering
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a plugin system for custom effects
+- [ ] Propose a collaborative editing architecture
+- [ ] Review accessibility of generated designs

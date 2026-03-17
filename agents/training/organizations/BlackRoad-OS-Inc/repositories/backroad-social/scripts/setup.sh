@@ -1,9 +1,8 @@
 #!/bin/bash
-# Setup backroad-social for training
 set -e
+echo "Setting up backroad-social training environment..."
+if [ ! -d "backroad-social" ]; then gh repo clone BlackRoad-OS-Inc/backroad-social; fi
+cd backroad-social
+python3 -m venv .venv 2>/dev/null && source .venv/bin/activate && pip install -r requirements.txt 2>/dev/null || true
 
-echo 'Cloning backroad-social...'
-gh repo clone BlackRoad-OS-Inc/backroad-social ~/training/backroad-social
-cd ~/training/backroad-social
-pip install -r requirements.txt 2>/dev/null || true
-echo '✓ backroad-social ready for training'
+echo "Setup complete."

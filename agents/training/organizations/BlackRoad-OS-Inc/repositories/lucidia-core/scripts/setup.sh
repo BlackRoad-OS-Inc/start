@@ -1,9 +1,6 @@
 #!/bin/bash
-# Setup lucidia-core for training
 set -e
-
-echo 'Cloning lucidia-core...'
-gh repo clone BlackRoad-OS-Inc/lucidia-core ~/training/lucidia-core
-cd ~/training/lucidia-core
-pip install -r requirements.txt 2>/dev/null || true
-echo '✓ lucidia-core ready for training'
+echo "Setting up lucidia-core training environment..."
+if [ ! -d "lucidia-core" ]; then gh repo clone BlackRoad-OS-Inc/lucidia-core; fi
+cd lucidia-core
+echo "Setup complete."

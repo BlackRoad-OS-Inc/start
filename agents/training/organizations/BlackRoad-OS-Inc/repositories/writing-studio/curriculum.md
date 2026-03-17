@@ -1,40 +1,42 @@
 # writing-studio — Agent Training Curriculum
 
-**Type:** app | **Language:** javascript
+**Type:** app | **Languages:** python
 
 ## Overview
 
-AI writing platform
+Content creation platform with AI-powered writing assistance, grammar checking, style analysis, and research tools. Typography analyzer for font and layout optimization.
+
+## Key Files
+
+- `src/typography_analyzer.py` — Typography and readability analysis
+- `tests/test_typography.py` — Typography tests
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of writing-studio
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `typography_analyzer.py` and list all analysis features
+- [ ] Understand the readability scoring model
+- [ ] Run tests and verify analysis accuracy
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new readability metric
+- [ ] Improve font recommendation logic
+- [ ] Add a test for edge cases
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Build an AI writing assistant using Ollama
+- [ ] Add grammar checking
+- [ ] Implement style guide enforcement
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a collaborative editing architecture
+- [ ] Propose AI-powered research assistance
+- [ ] Review the platform for accessibility

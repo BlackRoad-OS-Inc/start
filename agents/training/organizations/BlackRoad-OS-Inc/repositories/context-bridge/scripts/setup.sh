@@ -1,9 +1,6 @@
 #!/bin/bash
-# Setup context-bridge for training
 set -e
-
-echo 'Cloning context-bridge...'
-gh repo clone BlackRoad-OS-Inc/context-bridge ~/training/context-bridge
-cd ~/training/context-bridge
-npm install
-echo '✓ context-bridge ready for training'
+echo "Setting up context-bridge training environment..."
+if [ ! -d "context-bridge" ]; then gh repo clone BlackRoad-OS-Inc/context-bridge; fi
+cd context-bridge
+echo "Setup complete."

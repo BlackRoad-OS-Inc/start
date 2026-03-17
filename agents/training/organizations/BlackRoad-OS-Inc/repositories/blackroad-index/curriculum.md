@@ -1,45 +1,42 @@
 # blackroad-index — Agent Training Curriculum
 
-**Type:** worker | **Language:** javascript
+**Type:** worker | **Languages:** javascript
 
 ## Overview
 
-Gitea+GitHub code search, D1 FTS5
+Gitea + GitHub code search with D1 FTS5 and scheduled indexing. Searches across 383 repos on Gitea and GitHub. Indexes code, READMEs, and file paths for ecosystem-wide search.
+
+## Key Files
+
+- `src/worker.js` — Worker: FTS5 search, Gitea/GitHub API indexing, scheduled triggers
+- `wrangler.toml` — Worker config, D1 binding, cron triggers
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of blackroad-index
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
-
-- `src/worker.js` — Main Worker source
-- `wrangler.toml` — Deployment config
-- `openapi.json` — API documentation
-- `package.json` — Dependencies
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `src/worker.js` and list all routes
+- [ ] Understand how Gitea API and GitHub API are queried
+- [ ] Identify the D1 FTS5 schema
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new search filter (by language, by org)
+- [ ] Improve indexing error handling
+- [ ] Add a test for search relevance
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add incremental indexing (only new/changed repos)
+- [ ] Build a search results UI
+- [ ] Add code snippet previews in results
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a federated search across Gitea + GitHub + D1
+- [ ] Propose relevance ranking improvements
+- [ ] Review indexing performance at scale

@@ -1,40 +1,43 @@
 # fleet-heartbeat — Agent Training Curriculum
 
-**Type:** monitoring | **Language:** python
+**Type:** app | **Languages:** python
 
 ## Overview
 
-Fleet health monitoring dashboard
+Real-time fleet health monitoring dashboard. SSH-based checks on all 5 Pi nodes, SQLite history for trending, auto-healing (restart services), and web UI. FastAPI backend showing CPU, memory, disk, temperature, services across the fleet.
+
+## Key Files
+
+- `server.py` — FastAPI: SSH health checks, SQLite history, auto-healing, web dashboard
+- `tests/test_server.py` — Integration tests
+- `deploy.sh` — Deployment script
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of fleet-heartbeat
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `server.py` and list all health metrics collected
+- [ ] Identify the auto-healing logic — what triggers a restart?
+- [ ] Trace the SSH connection pattern for fleet checks
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new health metric (e.g., network latency)
+- [ ] Improve the web dashboard UI
+- [ ] Add a test for the auto-healing path
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add alerting (Slack/email on health degradation)
+- [ ] Implement health history trends (graphs over time)
+- [ ] Add fleet comparison view
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design push-based health reporting (nodes push to central)
+- [ ] Propose a health scoring system (0-100 per node)
+- [ ] Review SSH key management for security

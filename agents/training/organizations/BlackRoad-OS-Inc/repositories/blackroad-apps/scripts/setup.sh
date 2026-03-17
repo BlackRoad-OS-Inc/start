@@ -1,9 +1,8 @@
 #!/bin/bash
-# Setup blackroad-apps for training
 set -e
+echo "Setting up blackroad-apps training environment..."
+if [ ! -d "blackroad-apps" ]; then gh repo clone BlackRoad-OS-Inc/blackroad-apps; fi
+cd blackroad-apps
 
-echo 'Cloning blackroad-apps...'
-gh repo clone BlackRoad-OS-Inc/blackroad-apps ~/training/blackroad-apps
-cd ~/training/blackroad-apps
-npm install
-echo '✓ blackroad-apps ready for training'
+npm install 2>/dev/null || true
+echo "Setup complete."

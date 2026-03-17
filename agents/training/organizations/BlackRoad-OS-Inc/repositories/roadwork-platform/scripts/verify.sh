@@ -1,10 +1,5 @@
 #!/bin/bash
-# Verify roadwork-platform training completion
 set -e
-
-echo 'Verifying roadwork-platform training...'
-# Check that the agent can:
-# 1. Navigate the codebase
-# 2. Explain the architecture
-# 3. Make a change and deploy
-echo '✓ roadwork-platform training verified'
+PASS=0; FAIL=0
+check() { if eval "$2" &>/dev/null; then echo "PASS: $1"; ((PASS++)); else echo "FAIL: $1"; ((FAIL++)); fi; }
+cd roadwork-platform 2>/dev/null || cd .; check 'Repo exists' '[ -f LICENSE ] || [ -f README.md ]'; echo "Results: $PASS passed, $FAIL failed"

@@ -1,40 +1,42 @@
 # video-studio — Agent Training Curriculum
 
-**Type:** app | **Language:** javascript
+**Type:** app | **Languages:** python
 
 ## Overview
 
-Video editor with AI captions
+Video editor with timeline editing, AI auto-captions, and effects. Motion library system for animations and transitions. BlackRoad's creator-focused video tool.
+
+## Key Files
+
+- `src/motion_library.py` — Animation and motion effects library
+- `tests/test_motion.py` — Motion library tests
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of video-studio
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `motion_library.py` and list all available effects
+- [ ] Understand the animation keyframe model
+- [ ] Run tests and verify all effects work
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new motion effect
+- [ ] Improve easing functions
+- [ ] Add a test for edge cases (zero duration, etc.)
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Build a timeline rendering engine
+- [ ] Add AI auto-captioning via Ollama
+- [ ] Implement video export
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a plugin system for custom effects
+- [ ] Propose real-time preview architecture
+- [ ] Review video codec requirements

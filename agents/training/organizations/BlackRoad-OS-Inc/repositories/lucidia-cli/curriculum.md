@@ -1,44 +1,46 @@
 # lucidia-cli — Agent Training Curriculum
 
-**Type:** agent | **Language:** python
+**Type:** cli | **Languages:** python
 
 ## Overview
 
-Terminal OS — 30+ components, Textual/Rich
+Full terminal operating system — web browser, virtual filesystem, Ollama AI agents, mini apps, process manager, kanban board, notes, and 30+ components. Built on Textual/Rich. A complete TUI experience for interacting with the BlackRoad ecosystem from the terminal.
+
+## Key Files
+
+- `br_splash.py` — Splash screen and entry point
+- `agents.py` — Ollama AI agent integration
+- `tests/test_apps.py` — App tests
+- `tests/test_virtual_fs.py` — Virtual filesystem tests
+- `tests/test_tui.py` — TUI component tests
+- `setup.sh` — Setup script
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of lucidia-cli
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
-
-- `*.py` — Python source modules
-- `requirements.txt` — Dependencies
-- `README.md` — Documentation
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Run `setup.sh` and launch the TUI
+- [ ] List all 30+ components and their purposes
+- [ ] Read `agents.py` and understand Ollama integration
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Fix a bug in the virtual filesystem
+- [ ] Add a new mini app to the TUI
+- [ ] Improve a test case
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Build a new TUI component (e.g., fleet monitor widget)
+- [ ] Add AI-powered command suggestions
+- [ ] Implement tab completion for all commands
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a plugin system for third-party components
+- [ ] Propose a remote session sharing feature
+- [ ] Review the virtual filesystem for security

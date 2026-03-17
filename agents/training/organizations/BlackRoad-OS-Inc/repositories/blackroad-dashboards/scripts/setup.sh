@@ -1,8 +1,8 @@
 #!/bin/bash
-# Setup blackroad-dashboards for training
 set -e
+echo "Setting up blackroad-dashboards training environment..."
+if [ ! -d "blackroad-dashboards" ]; then gh repo clone BlackRoad-OS-Inc/blackroad-dashboards; fi
+cd blackroad-dashboards
 
-echo 'Cloning blackroad-dashboards...'
-gh repo clone BlackRoad-OS-Inc/blackroad-dashboards ~/training/blackroad-dashboards
-cd ~/training/blackroad-dashboards
-echo '✓ blackroad-dashboards ready for training'
+
+echo "Setup complete."

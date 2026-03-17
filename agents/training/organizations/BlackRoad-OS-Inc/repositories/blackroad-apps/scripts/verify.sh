@@ -1,10 +1,9 @@
 #!/bin/bash
-# Verify blackroad-apps training completion
 set -e
-
-echo 'Verifying blackroad-apps training...'
-# Check that the agent can:
-# 1. Navigate the codebase
-# 2. Explain the architecture
-# 3. Make a change and deploy
-echo '✓ blackroad-apps training verified'
+PASS=0; FAIL=0
+check() { if eval "$2" &>/dev/null; then echo "PASS: $1"; ((PASS++)); else echo "FAIL: $1"; ((FAIL++)); fi; }
+cd blackroad-apps 2>/dev/null || cd .
+check "Repo exists" "[ -f LICENSE ] || [ -f README.md ]"
+check "Source files present" "ls *.py src/*.py *.js src/*.js src/*.ts *.sh 2>/dev/null | head -1"
+echo ""; echo "Results: $PASS passed, $FAIL failed"
+[ "$FAIL" -eq 0 ] && echo "All checks passed." || exit 1

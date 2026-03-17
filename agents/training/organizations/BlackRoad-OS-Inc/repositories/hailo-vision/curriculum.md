@@ -1,40 +1,43 @@
 # hailo-vision — Agent Training Curriculum
 
-**Type:** vision | **Language:** python
+**Type:** app | **Languages:** python
 
 ## Overview
 
-Computer vision on Hailo-8 accelerators
+Real-time computer vision on Hailo-8 AI accelerators (26 TOPS each). YOLOv5 object detection, video analytics, and edge inference pipelines on Raspberry Pi 5. Two Hailo-8 chips on Cecilia + Octavia = 52 TOPS total.
+
+## Key Files
+
+- `server.py` — FastAPI: camera input, Hailo inference, detection results, video stream
+- `tests/test_server.py` — Tests
+- `deploy.sh` — Pi deployment
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of hailo-vision
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `server.py` and understand the inference pipeline
+- [ ] Identify which models run on Hailo-8 vs CPU
+- [ ] Describe the video frame processing flow
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new detection class to the model
+- [ ] Improve bounding box visualization
+- [ ] Add a test for the inference pipeline
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Add multi-camera support
+- [ ] Implement object tracking across frames
+- [ ] Add a REST API for triggering captures
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a distributed vision pipeline across both Hailo chips
+- [ ] Propose a model fine-tuning workflow
+- [ ] Review inference latency optimization

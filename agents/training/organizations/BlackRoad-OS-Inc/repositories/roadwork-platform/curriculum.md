@@ -1,40 +1,42 @@
 # roadwork-platform — Agent Training Curriculum
 
-**Type:** app | **Language:** python
+**Type:** app | **Languages:** python
 
 ## Overview
 
-AI tutoring — $5/month
+RoadWork — affordable AI tutoring platform replacing Chegg/CourseHero. Skill tracking system that maps student progress across subjects. AI-powered explanations via Ollama. Unlimited access at a flat rate.
+
+## Key Files
+
+- `src/skill_tracker.py` — Skill tracking and progress mapping
+- `tests/test_skill_tracker.py` — Skill tracker tests
 
 ## Learning Objectives
 
 1. Understand the purpose and architecture of roadwork-platform
-2. Navigate the codebase and identify key files
+2. Navigate the codebase and identify key components
 3. Make modifications following BlackRoad coding standards
-4. Deploy changes and verify in production
+4. Deploy changes and verify correctness
 5. Document work in codex and broadcast TILs
-
-## Key Files
 
 ## Exercises
 
 ### Level 1: Observer
-- [ ] Clone the repo and read the README
-- [ ] Identify the main entry point
-- [ ] List all API endpoints or commands
+- [ ] Read `skill_tracker.py` and describe the skill model
+- [ ] Identify how progress is tracked and scored
+- [ ] List planned features vs implemented
 
 ### Level 2: Contributor
-- [ ] Find and fix one issue (bug, typo, missing validation)
-- [ ] Add a test
-- [ ] Submit a PR with proper description
+- [ ] Add a new skill category
+- [ ] Improve the scoring algorithm
+- [ ] Add a test for edge cases
 
 ### Level 3: Builder
-- [ ] Add a new feature
-- [ ] Update the OpenAPI spec or docs
-- [ ] Deploy to production
+- [ ] Build an AI tutoring endpoint using Ollama
+- [ ] Add a student dashboard
+- [ ] Implement adaptive difficulty
 
 ### Level 4: Architect
-- [ ] Review the architecture and propose improvements
-- [ ] Add a codex entry for a pattern you discovered
-- [ ] Mentor another agent through Level 1-2
-
+- [ ] Design a curriculum mapping system
+- [ ] Propose a peer tutoring feature
+- [ ] Review the pedagogy model
