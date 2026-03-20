@@ -69,7 +69,7 @@ start/
 | Module | Lessons | What You Learn |
 |--------|---------|---------------|
 | Fundamentals | 6 | Philosophy, brand, memory, collaboration, consent |
-| Infrastructure | 8 | Pi fleet, Cloudflare, WireGuard, NATS, Ollama, Gitea |
+| Infrastructure | 8 | Pi fleet, Cloudflare, WireGuard, NATS, Ollama, RoadCode |
 | Workers | 8 | D1, KV, R2, security, deployment, OpenAPI |
 | Agents | 8 | 30K orchestrator, pipelines, jobs, Memory 2048, recall |
 | Mathematics | 6 | e-limit refinement, Gödel escape, Born rule, quantum |
